@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Juego Pirata - Recoger y Entregar</title>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            z-index: 100;
+        }
+
+        #instructions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+    </style>
+    <script src="https://unpkg.com/babylonjs@6.0.0/babylon.js"></script>
+    <script src="https://unpkg.com/babylonjs-loaders@6.0.0/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    
+    <div id="ui">
+        <div id="status">Estado: Busca el tesoro</div>
+        <div id="score">Tesoros entregados: 0/10</div>
+        <div id="timer" style="font-size: 20px; font-weight: bold; margin-top: 10px;">Tiempo: 1:00</div>
+    </div>
+
+    <div id="instructions">
+        <strong>🏴‍☠️ CONTROLES:</strong><br>
+        W, A, S, D - Mover<br>
+        ESPACIO - Recoger/Entregar tesoro<br>
+        <br>
+        <strong>OBJETIVO:</strong><br>
+        ¡Recoge 10 tesoros en 1 minuto!<br>
+        Llévalos al barco pirata
+    </div>
+
+    <div id="gameOver" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.9); padding: 40px; border-radius: 20px; text-align: center; z-index: 200;">
+        <h1 id="gameOverTitle" style="color: #FFD700; font-size: 48px; margin: 0 0 20px 0; text-shadow: 3px 3px 6px rgba(0,0,0,0.8);"></h1>
+        <p id="gameOverMessage" style="color: white; font-size: 24px; margin: 20px 0;"></p>
+        <p id="finalScore" style="color: #FFD700; font-size: 32px; font-weight: bold;"></p>
+        <button onclick="location.reload()" style="margin-top: 20px; padding: 15px 30px; font-size: 20px; background: #FFD700; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+            🔄 Jugar de Nuevo
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
